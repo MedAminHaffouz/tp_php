@@ -23,16 +23,19 @@ class Etudiant
     }
 
     public function calcMoyenne(){
-        $S=0;
-        foreach($this->notes as $note){
-            $S=$S+$note;
+        if (count($this->notes)==0){
+            return 0;
         }
-        $n=count($this->notes);
-        return $S/$n;
+        return array_sum($this->notes) / count($this->notes);
     }
 
     public function estAdmis(){
-
+        if($this->calcMoyenne()>=10){
+            echo "Admis";
+        }
+        else{
+            echo "Pas Admis";
+        }
     }
 }
 

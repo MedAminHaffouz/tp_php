@@ -15,15 +15,16 @@
 </head>
 <body>
 <?php
-$aymen=new Etudiant(nom:"Aymen",notes:[11,13,18,7,10,13,2,5,1]);
-$skander=new Etudiant(nom:"Skander",notes:[15,9,8,16]);
+$aymen=new Etudiant("Aymen",[11,13,18,7,10,13,2,5,1]);
+$skander=new Etudiant("Skander",[15,9,8,16]);
+//echo $aymen->calcMoyenne();
 function couleur($val){
     if ($val<10){return 'red';}
-    if ($val>10){return 'green';}
+    if ($val>10){return 'greenyellow';}
     else {return 'orange';}
 }
 function style($val){
-    return "style=background-color:".couleur($val);
+    return 'style="background-color:' . couleur($val) . ';"';
 }
 ?>
 <div class="container">
@@ -33,14 +34,21 @@ function style($val){
             <?php
             $notet_aymen=$aymen->getNotes();
             foreach ($notet_aymen as $note){
-                echo "<p".style($note).$note."</p>";
+                echo "<p ".style($note).">".$note."</p>";
             }
             ?>
-            <p style="background-color: aqua">Votre mpoyenne est <?php echo $aymen->calcMoyenne()?></p>
+            <p style="background-color: skyblue">Votre moyenne est <?php echo number_format($aymen->calcMoyenne(), 13); ?></p>
         </div>
     </div>
     <div class="item">
-        <h3><?php echo $skander->getNom(); ?></h3>
+        <p><?php echo $skander->getNom(); ?></p>
+        <?php
+        $notet_skander=$skander->getNotes();
+        foreach ($notet_skander as $note){
+            echo "<p ".style($note).">".$note."</p>";
+        }
+        ?>
+        <p style="background-color: skyblue">Votre moyenne est <?php echo ($skander->calcMoyenne()); ?></p>
     </div>
 </div>
 </body>
