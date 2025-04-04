@@ -15,6 +15,7 @@ class Pokemon
         $this->attachPokemon=new AttackPokemon($mina,$maxa,$speca,$proba);
     }
 
+    //getters
     function getName(){return $this->name;}
     function getUrl(){return $this->url;}
     function getHp(){return $this->hp;}
@@ -31,13 +32,13 @@ class Pokemon
         return ($this->hp<=0);
     }
 
-    function whoAmI(){
-        echo $this->name;
-        echo "<br>";
-        echo $this->hp;
-        echo "<br>";
-        echo $this->attachPokemon->attackMinimal." -> ".$this->attachPokemon->attackMaximal;
-        echo "<br>";
+    function whoAmI() {
+        echo "Nom: $this->name <br>";
+        echo "HP: $this->hp <br>";
+        echo "Attaque minimale: " . $this->attachPokemon->attackMinimal . "<br>";
+        echo "Attaque maximale: " . $this->attachPokemon->attackMaximal . "<br>";
+        echo "Probabilité d'attaque spéciale: " . $this->attachPokemon->probabilitySpecialAttack . "% <br>";
+        echo "Multiplicateur attaque spéciale: x" . $this->attachPokemon->specialAttack . "<br>";
     }
     function attack(Pokemon $p){
         $attackValue = rand($this->attachPokemon->attackMinimal, $this->attachPokemon->attackMaximal);
@@ -47,4 +48,5 @@ class Pokemon
         $p->hp -= $attackValue;
         return "$this->name attaque $p->name avec $attackValue dégâts !";
     }
+    //comment il attaque : on a une attaque min et une attaque max , pour l'attque speciale on génere un nombre compris entre les 2 attaques et on essaie de voir si il s'agit d'une attaque spéciale ou non on générant un nombre aléatoire et on voit s'il est inférieur à la probabilité ou non
 }
