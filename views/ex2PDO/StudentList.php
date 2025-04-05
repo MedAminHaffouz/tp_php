@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +124,7 @@
                     
                     echo "<td class='actions'>  <a href='detailEtudiant.php?name={$student->name}'><i class='fas fa-info-circle'></i></a>";
                     
-                    if(isset($_GET["admin"])){
+                    if($_SESSION['role']=='admin'){
                     echo   " <a href='editEtudiant.php?name={$student->name}'><i class='fas fa-edit'></i></a>
                         <a href='StudentList.php?deletename={$student->name}'><i class='fas fa-trash-alt'></i></a>
                     </td>";
