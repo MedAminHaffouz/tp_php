@@ -1,5 +1,11 @@
 <?php
 session_start();
+if(isset($_GET["deletename"])){
+    require_once "../../classes/exPDO/EtudiantTable.php";
+    EtudiantTable::deleteEtudiantByName($_GET["deletename"]);
+    header("Location: StudentList.php");
+    exit(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,11 +96,17 @@ session_start();
     </div>
     
     <div class="container">
-        <div class="title">Liste des Étudiants</div>
-        <form method="GET" action="StudentList.php">
-    <input type="text" name="filter_name" placeholder="Veuillez renseigner votre nom">
-    <button type="submit" style="background-color: red;color:white;">Filtrer</button>
-</form>
+        <div class="title">
+            Liste des Étudiants
+        </div>
+        <div style="display:flex;flex-direction:row; gap:10px;">
+            <form method="GET" action="StudentList.php">
+               <input type="text" name="filter_name" placeholder="Veuillez renseigner votre nom">
+              <button type="submit" style="background-color: red;color:white;">Filtrer</button>
+            </form>
+            <a href="ajoutEtudiant.php"><i class="fas fa-user-plus"></i></a>
+        </div>
+    
         <table id="studentsTable" class="display nowrap">
             <thead>
                 <tr>
@@ -132,11 +144,7 @@ session_start();
 
                     echo "</tr>";
                 }
-                if(isset($_GET["deletename"])){
-                    EtudiantTable::deleteEtudiantByName($_GET["deletename"]);
-                    header("Location: StudentList.php");
-                    exit(); 
-                }
+                
                 ?>
             </tbody>
         </table>

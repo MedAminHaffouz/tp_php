@@ -34,11 +34,11 @@ require_once 'DatabaseConnexion.php';
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-        public static function updateStudent($id,$name,$birthday,$section_id){
+        public static function updateStudent($id,$name,$birthday,$section_id,$image_id){
             $connex=DatabaseConnexion::getInstance();
-            $query="UPDATE Etudiants SET name = ?, birthday = ?, section_id = ? WHERE id = ?";
+            $query="UPDATE Etudiants SET name = ?, birthday = ?, section_id = ? ,image=? WHERE id = ?";
             $stmt=$connex->prepare($query);
-            $stmt->execute([$name,$birthday,$section_id,$id]);
+            $stmt->execute([$name,$birthday,$section_id,$image_id,$id]);
             if($stmt->rowCount()>0){
                 return true;
             }else{

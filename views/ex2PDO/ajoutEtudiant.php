@@ -3,19 +3,7 @@ require_once "../../classes/exPDO/EtudiantTable.php";
 require_once "../../classes/exPDO/SectionTable.php";
 ob_start();
 
-if (isset($_GET["name"])) {
-    // Fetch the student's details based on the name
-    $students = EtudiantTable::rechercherEtudiantByName($_GET["name"]);
-    if (count($students) > 0) {
-        $student = $students[0]; // Assume there's only one student matching the name
-    } else {
-        echo "Student not found!";
-        exit;
-    }
-} else {
-    echo "No student selected!";
-    exit;
-}
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updatedName = $_POST['name'];
@@ -23,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updatedSectionId = $_POST['section_id'];
     $updatedImage = $_POST['image']; 
 
-    EtudiantTable::updateStudent($student->id, $updatedName, $updatedBirthday, $updatedSectionId, $updatedImage);
+    EtudiantTable::ajouterEtudiant( $updatedName, $updatedBirthday, $updatedSectionId, $updatedImage);
     header("Location: StudentList.php");
 }
 
@@ -38,20 +26,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
-<h2>Edit Student Information</h2>
+<h2>Add a new Student </h2>
 
-<form method="POST" action="editEtudiant.php?name=<?php echo $student->name; ?>">
+<form method="POST" action="ajoutEtudiant.php?name=<?php echo $student->name; ?>">
     <input type="hidden" name="id" value="<?php echo $student->id; ?>">
 
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($student->name); ?>" required><br><br>
+    <input type="text" id="name" name="name" ><br><br>
 
     <label for="birthday">Birthday:</label>
-    <input type="date" id="birthday" name="birthday" value="<?php echo $student->birthday; ?>" required><br><br>
+    <input type="date" id="birthday" name="birthday" ><br><br>
     <label for="img">img (shouldn't be longer than 255 char ):</label>
-    <input type="url" id="image" name="image" value="<?php echo $student->image; ?>" required><br><br>
+    <input type="url" id="image" name="image" ><br><br>
     <label for="section_id">Section:</label>
-    <select id="section_id" name="section_id" required>
+    <select id="section_id" name="section_id" >
         <?php
         
         $sections = SectionTable::rechercherSectionByName("");
