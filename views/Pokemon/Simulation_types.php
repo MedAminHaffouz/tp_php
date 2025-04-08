@@ -1,9 +1,9 @@
 <?php 
-require_once '../classes/ex3-4/AttackPokemon.php';
-require_once '../classes/ex3-4/Pokemon.php';
-require_once '../classes/ex3-4/PokemonFeu.php';
-require_once '../classes/ex3-4/PokemonEau.php';
-require_once '../classes/ex3-4/PokemonPlante.php';
+require_once '../../classes/ex3-4/AttackPokemon.php';
+require_once '../../classes/ex3-4/Pokemon.php';
+require_once '../../classes/ex3-4/PokemonFeu.php';
+require_once '../../classes/ex3-4/PokemonEau.php';
+require_once '../../classes/ex3-4/PokemonPlante.php';
 
 // fight plante vs eau
 $pokemon1 = new PokemonEau("Blastoise", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/009.png", 130, new AttackPokemon(10, 20, 1.5, 40));

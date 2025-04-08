@@ -43,7 +43,7 @@
     </thead>
     <tbody>
         <?php
-        require_once "../classes/exPDO/DatabaseConnexion.php" ;
+        require_once "../../classes/exPDO/DatabaseConnexion.php" ;
          $connex=DatabaseConnexion::getInstance();
          $req="select * from student";
          $response=$connex->query($req);

@@ -13,7 +13,7 @@ class GestionnaireSessions
     public static function incrementVisites() {
         self::init();
         if (!isset($_SESSION["visites"])) {
-            $_SESSION["visites"] = 0;
+            $_SESSION["visites"] = 1;
         }
         else{
             $_SESSION['visites'] ++;
@@ -24,7 +24,7 @@ class GestionnaireSessions
     public static function getVisites() {
         self::init();
         if (!isset($_SESSION["visites"])) {
-            return 0;
+            return 1;
         }
         return $_SESSION['visites'];
     }

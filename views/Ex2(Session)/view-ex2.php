@@ -1,16 +1,16 @@
 <?php
-require_once '../classes/ex2/GestionnaireSessions.php';
+require_once '../../classes/ex2/GestionnaireSessions.php';
 
 // Pour la bouton RESET
 if (isset($_POST['reset'])) {
-    SessionManager::reset();
+    GestionnaireSessions::reset();
     // Redirection pour éviter la résoumission car en refresh parfois la méthode POST serait envoyé une autre fois
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
 
-SessionManager::incrementVisites();
-$visites = SessionManager::getVisites();
+GestionnaireSessions::incrementVisites();
+$visites = GestionnaireSessions::getVisites();
 ?>
 
 <!DOCTYPE html>

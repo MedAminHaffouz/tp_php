@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php 
-     require_once "../classes/exPDO/DatabaseConnexion.php" ;
+     require_once "../../classes/exPDO/DatabaseConnexion.php" ;
       if(isset($_GET['id'])){
         $connex=DatabaseConnexion::getInstance();
         $req=$connex->prepare("select * from student where id=?");

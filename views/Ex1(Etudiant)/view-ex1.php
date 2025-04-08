@@ -1,4 +1,4 @@
-<?php require_once '../classes/ex1/Etudiant.php';?>
+<?php require_once '../../classes/ex1/Etudiant.php';?>
 <!DOCTYPE html>
 <html>
 <head>

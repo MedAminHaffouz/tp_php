@@ -1,6 +1,6 @@
 <?php 
-require '../classes/ex3/AttackPokemon.php';
-require '../classes/ex3/Pokemon.php';
+require '../../classes/ex3/AttackPokemon.php';
+require '../../classes/ex3/Pokemon.php';
 
 $pokemon1 = new Pokemon("Pikachu", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png", 100, new AttackPokemon(10, 20, 1.5, 30));
 $pokemon2 = new Pokemon("Charmander", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png", 100, new AttackPokemon(8, 18, 2.0, 25));
